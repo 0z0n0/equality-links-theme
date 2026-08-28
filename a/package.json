@@ -1,0 +1,12 @@
+{
+  "name": "equality-links-theme",
+  "description": "Custom dark mode theme for Equality Links corporate newsletter and hub",
+  "version": "1.0.0",
+  "engines": {
+    "ghost": ">=5.0.0"
+  },
+  "license": "MIT",
+  "config": {
+    "posts_per_page": 10
+  }
+}

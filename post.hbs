@@ -1,0 +1,25 @@
+{{!< default}}
+
+{{#post}}
+<article>
+    {{#if primary_tag}}
+        <span class="badge">{{primary_tag.name}}</span>
+    {{else}}
+        <span class="badge">Artículo</span>
+    {{/if}}
+    <h1 style="font-size: 30px; font-weight: 800; color: #FFFFFF; margin-bottom: 8px; line-height: 1.2;">{{title}}</h1>
+    <div style="font-size: 13px; color: #6C757D; margin-bottom: 24px;">
+        Publicado el {{date format="DD MMMM YYYY"}} • Por {{authors}}
+    </div>
+
+    <div class="card" style="padding: 32px;">
+        <div class="article-content" style="color: #D1D5DB; font-size: 16px; line-height: 1.7;">
+            {{content}}
+        </div>
+    </div>
+
+    <div style="margin-top: 24px;">
+        <a href="{{@site.url}}" class="btn btn-secondary">← Volver al Portal General</a>
+    </div>
+</article>
+{{/post}}

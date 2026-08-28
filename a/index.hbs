@@ -1,0 +1,58 @@
+{{!< default}}
+
+{{#get "posts" limit="all" include="tags" order="published_at desc" as |all_posts|}}
+
+    {{!-- 1. NOTA PRINCIPAL (El post más reciente) --}}
+    {{#foreach all_posts limit="1"}}
+    <article class="card card-hero">
+        {{#if primary_tag}}
+            {{#if primary_tag.accent_color}}
+                <span class="badge" style="color: {{primary_tag.accent_color}}; background-color: {{primary_tag.accent_color}}26; border-color: {{primary_tag.accent_color}}4D;">
+                    {{primary_tag.name}}
+                </span>
+            {{else}}
+                <span class="badge">{{primary_tag.name}}</span>
+            {{/if}}    
+        {{/if}}
+        <h1 class="card-title">{{title}}</h1>
+        <p class="card-text">{{excerpt words="30"}}</p>
+        <a href="{{url}}" class="btn">Leer más ↗</a>
+    </article>
+    {{/foreach}}
+
+    {{!-- 2. GRILLA BENTO (Todos los posts restantes a partir del segundo, sin límite arbitrario) --}}
+    {{#if all_posts.[1]}}
+    <div class="bento-grid">
+        {{#foreach all_posts from="2"}}
+        <article class="card" style="display: flex; flex-direction: column; justify-content: space-between; margin-bottom: 0;">
+            <div>
+                {{#if primary_tag}}
+                    {{#if primary_tag.accent_color}}
+                        <span class="badge" style="color: {{primary_tag.accent_color}}; background-color: {{primary_tag.accent_color}}26; border-color: {{primary_tag.accent_color}}4D;">
+                             {{primary_tag.name}}
+                         </span>
+                    {{else}}
+                        <span class="badge">{{primary_tag.name}}</span>
+                    {{/if}}
+                {{/if}}
+                <h2 class="card-title" style="font-size: 18px;">{{title}}</h2>
+                <p class="card-text">{{excerpt words="16"}}</p>
+            </div>
+            <div style="margin-top: 14px;">
+                <a href="{{url}}" class="btn btn-secondary">Ver nota ↗</a>
+            </div>
+        </article>
+        {{/foreach}}
+    </div>
+    {{/if}}
+
+{{/get}}
+
+{{!-- 3. BLOQUE DE AVISOS RÁPIDOS --}}
+<div class="card" style="margin-top: 16px;">
+    <span class="badge">Avisos Rápidos</span>
+    <ul style="margin: 0; padding-left: 20px; color: #A0AAB0; font-size: 14px; line-height: 1.8;">
+        <li>Mantenimiento programado de servidores este viernes 22:00 hs.</li>
+        <li>Nuevos accesos directos disponibles en la pestaña de <strong style="color: #a7dd00;">Redes</strong>.</li>
+    </ul>
+</div>
